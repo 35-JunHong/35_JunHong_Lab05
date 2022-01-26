@@ -47,6 +47,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public Text scoreTxt;
         int score = 0;
 
+        public GameObject Player;
+
         // Use this for initialization
         private void Start()
         {
@@ -94,6 +96,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
             if(score >= 60)
             {
                 SceneManager.LoadScene("GameWin");
+            }
+
+            if(Player.transform.position.y <= -1.2)
+            {
+                SceneManager.LoadScene("GameLose");
             }
         }
 
