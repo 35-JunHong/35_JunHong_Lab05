@@ -49,6 +49,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         public GameObject Player;
 
+        public Text timerTxt;
+        float timer = 40f;
+
         // Use this for initialization
         private void Start()
         {
@@ -65,6 +68,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             score = 0;
             scoreTxt.text = "Score: " + score;
+
+            timer = 40f;
+            timerTxt.text = "Timer: " + timer;
         }
 
 
@@ -99,6 +105,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
 
             if(Player.transform.position.y <= -1.2)
+            {
+                SceneManager.LoadScene("GameLose");
+            }
+
+            timer -= Time.deltaTime;
+            timerTxt.text = "Timer: " + timer.ToString("0");
+            if(timer <= 0)
             {
                 SceneManager.LoadScene("GameLose");
             }
